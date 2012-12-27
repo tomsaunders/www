@@ -1,0 +1,22 @@
+.pages > div {
+	display:none;
+}
+.table .break-row {
+	font-weight: bold;
+}
+.larger-font-size {
+	font-size: 200%;
+}
+.navbar {
+	margin-bottom: 5px;
+}
+#add-contact {
+	width:60%;
+	margin:auto;
+	margin-top: 50px;
+}
+#add-contact button{
+	padding:20px;
+	margin:auto;
+	width: 100%;
+}
