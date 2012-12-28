@@ -20,3 +20,6 @@
 	margin:auto;
 	width: 100%;
 }
+table.form td:first-child {
+	font-weight: bold;
+}

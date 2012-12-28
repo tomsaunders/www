@@ -26,7 +26,7 @@ var navbar = {
 			navbar.hideTabs();
 			$(tab).show();
 		});
-		$("ul#nav-tabs a[href=#contacts]").click();
+		$("ul#nav-tabs a[href=#home]").click();
 	},
 	hideTabs: function(){
 		$('div.pages > div').hide();
@@ -40,6 +40,22 @@ var home = {
 			$('#appointment').show();
 		});
 		$('.brand').text('Calendar');
+		$('#sync').click(function(e){
+			$.ajax({
+				url: 'http://localhost/diarysync/appointments/sync.json',
+				dataType: 'json',
+				success: home.syncOK
+			});
+		});
+	},
+	syncOK: function(data, status, xhr){
+		var tbody = $("#home tbody");
+		tbody.empty();
+		for (var i=0; i<data.appointments.length;i++){
+			var appt = data.appointments[i];
+			var rowData = [appt.Appointment.time, appt.Contact.name];
+			tableController.addRow(tbody, rowData);
+		}
 	}
 }
 var contacts = {
@@ -54,7 +70,7 @@ var contacts = {
 }
 var appointment = {
 	init: function(){
-		
+		$('.brand').text('Add');
 	}
 }
 var contact = {
@@ -84,9 +100,9 @@ var contactImport = {
 	},
 	success: function(contacts){
 		var table = $("#contact-import table tbody");
+		table.empty();
 		for (var k in contacts){
 			var contact = contacts[k];
-			console.log(contact);
 			var name = contact.displayName.split(" ");
 			var row = $("<tr />")
 				.append($("<td />").text(name[0]))
@@ -95,11 +111,20 @@ var contactImport = {
 					$(".detail", e.currentTarget).show();
 				});
 			table.append(row);
-			console.log(contact);
 		}
 	}
 	
 }
 var errorHandler = function(error){
 	console.log("An error occurred somewhere", error);
+}
+
+var tableController = {
+	addRow: function(tbody, data){
+		var row = $("<tr />");
+		for (var i = 0; i < data.length; i++){
+			row.append($("<td />").text(data[i]));
+		}
+		tbody.append(row);
+	}
 }
