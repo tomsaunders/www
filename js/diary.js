@@ -42,7 +42,7 @@ var home = {
 		$('.brand').text('Calendar');
 		$('#sync').click(function(e){
 			$.ajax({
-				url: 'http://localhost/diarysync/appointments/sync.json',
+				url: 'http://tsaunders.net/diarysync/appointments/sync.json',
 				dataType: 'json',
 				success: home.syncOK
 			});
