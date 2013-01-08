@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.myotherapy.appdiary"
+        versionCode="1" 
+        version   = "0.0.1">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Appointment Diary</name>
+
+    <description>
+        Appointment Diary Description
+    </description>
+
+    <author href="http://tsaunders.net email="tom@tsaunders.net">
+        Tom Saunders
+    </author>
+
+</widget>
